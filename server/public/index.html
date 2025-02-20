@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Blu-ray world</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="index.html">CD Movie Store</a>
+        <div class="d-flex">
+            <a href="cart.html" class="nav-link text-white me-2">Cart</a>
+            <a href="login.html" class="nav-link text-white me-2" id="loginLink">Login</a>
+            <a href="register.html" class="nav-link text-white" id="registerLink">Register</a>
+            <button class="btn btn-danger ms-2 d-none" id="logoutBtn">Logout</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Bluray CD Movie Store</h1>
+
+    <form id="filterForm" class="row g-3 mb-2">
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="search" placeholder="Search name/desc" />
+        </div>
+        <div class="col-md-2">
+            <input
+                    type="number"
+                    class="form-control"
+                    name="minRating"
+                    placeholder="Min Rating"
+                    min="0"
+                    max="10"
+            />
+
+        </div>
+        <div class="col-md-2">
+            <button type="button" id="toggleCategoriesBtn" class="btn btn-secondary w-100">
+                Categories
+            </button>
+        </div>
+        <div id="categoryContainer" class="hidden">
+            <p class="mt-2">Choose up to 3 categories:</p>
+            <div id="categoryCheckboxes" class="d-flex flex-wrap gap-3">
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Action" id="catAction" />
+                    <label class="form-check-label" for="catAction">Action</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Sci-fi" id="catScifi" />
+                    <label class="form-check-label" for="catScifi">Sci-fi</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Thriller" id="catThriller" />
+                    <label class="form-check-label" for="catThriller">Thriller</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Animation" id="catAnimation" />
+                    <label class="form-check-label" for="catAnimation">Animation</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Family" id="catFamily" />
+                    <label class="form-check-label" for="catFamily">Family</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Crime" id="catCrime" />
+                    <label class="form-check-label" for="catCrime">Crime</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Drama" id="catDrama" />
+                    <label class="form-check-label" for="catDrama">Drama</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Romance" id="catRomance" />
+                    <label class="form-check-label" for="catRomance">Romance</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Superhero" id="catSuperhero" />
+                    <label class="form-check-label" for="catSuperhero">Superhero</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Fantasy" id="catFantasy" />
+                    <label class="form-check-label" for="catFantasy">Fantasy</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Adventure" id="catAdventure" />
+                    <label class="form-check-label" for="catAdventure">Adventure</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="Comedy" id="catComedy" />
+                    <label class="form-check-label" for="catComedy">Comedy</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="History" id="catHistory" />
+                    <label class="form-check-label" for="catHistory">History</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input categoryCheck" type="checkbox" value="War" id="catWar" />
+                    <label class="form-check-label" for="catWar">War</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" name="inStock" id="inStockCheck" />
+                <label class="form-check-label" for="inStockCheck">In Stock</label>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+        </div>
+    </form>
+
+    <div class="mb-4">
+        <button id="sortNameBtn" class="btn btn-secondary me-2">Sort by Name</button>
+        <button id="sortPriceBtn" class="btn btn-secondary me-2">Sort by Price</button>
+        <button id="sortCategoryBtn" class="btn btn-secondary me-2">Sort by Category</button>
+        <button id="sortStockBtn" class="btn btn-secondary me-2">Sort by Stock</button>
+        <button id="sortRatingBtn" class="btn btn-secondary">Sort by Rating</button>
+    </div>
+
+    <div class="row" id="productsContainer">
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+</body>
+</html>
